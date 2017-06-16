@@ -13,9 +13,7 @@ import sys
 import xml.dom.minidom
 
 
-# the variables below assume the user is leveraging the
-# DEVNET Sandbox CSR1000v Lab
-#
+
 # use the IP address or hostname of your CSR1000V device
 
 HOST = '172.16.11.10'
@@ -28,7 +26,6 @@ PORT = 830
 
 USER = 'cisco'
 PASS = 'cisco'
-
 
 
 def get_hostname():
@@ -79,6 +76,7 @@ def get_interfaces():
                                 </native>
                             </filter>
                             '''
+
         result = m.get_config('running', interface_filter)
         xml_doc = xml.dom.minidom.parseString(result.xml)
         interfaces = []
@@ -89,6 +87,14 @@ def get_interfaces():
             interfaces.append(interface_name[index].firstChild.nodeValue)
             index += 1
         return interfaces
+
+
+def get_interface_state(interface_list):
+    """
+
+    :param interface_list:
+    :return:
+    """
 
 
 def get_sn():
@@ -121,7 +127,6 @@ def get_sn():
         return serial_number[0].firstChild.nodeValue
 
 
-
 def main():
     """
     This code will showcase how to get info about the network devices using NETCONF
@@ -151,7 +156,7 @@ def main():
     for intf in interfaces_list:
         print('    ', intf)
 
-
+    print('\n\nEnd of application run')
 
 if __name__ == '__main__':
-    sys.exit(main())
+    main()
