@@ -13,7 +13,7 @@ import xml.dom.minidom
 import json
 
 
-# use the IP address or hostname of your CSR1000V device
+# use the IP address or hostname of your 3850 device
 
 HOST = '172.16.10.105'
 
