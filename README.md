@@ -3,9 +3,10 @@
 NETCONF sample code folder
 
 
-Download the video files to play locally.
-Change the HOST, PORT, USER, PASS to use with your lab.
-Code tested with 16.5.1a, CSR 1000v.
+ - Download the video files to play locally.
+ - Change the HOST, PORT, USER, PASS to use with your lab.
+ - Code tested with 16.5.1a, CSR 1000v.
+
 
 
  - get_netconf_info.py
