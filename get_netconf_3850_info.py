@@ -219,11 +219,13 @@ def main():
 
     print('\nIP address or hostname of your 3850 device: HOST = "172.16.11.10"',
           '\nUse the NETCONF port for your IOS-XE device -  PORT = ', PORT,
-          '\nUse the user credentials for your IOS-XE device -  username = ', USER, ' password = ', PASS)
+          '\nUse the user credentials for your IOS-XE device -  username = ', USER, ' password = xxxxx')
 
-    print('\nIt will collect information about the device hostname and the S/N',
-          '\nThe list of all interfaces will be printed.'
-          '\nInterface names, configured IPv4 addresses, admin and protocol state are displayed')
+    print('\nThe device information that will be collected (if available): ',
+          '\n - hostname',
+          '\n - serial number'
+          '\n - the list of all interfaces',
+          '\n - interface names, configured IPv4 addresses, admin and operational state')
 
     # get the device hostname
 
