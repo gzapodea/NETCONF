@@ -217,7 +217,7 @@ def main():
 
     print('\nThis simple code will use NETCONF to connect to a network device running 16.5.1a\n')
 
-    print('\nIP address or hostname of your CSR1000V device: HOST = ', HOST,
+    print('\nIP address or hostname of your CSR device: HOST = ', HOST,
           '\nUse the NETCONF port for your IOS-XE device -  PORT = ', PORT,
           '\nUse the user credentials for your IOS-XE device -  username = ', USER, ' password = ', PASS)
 
