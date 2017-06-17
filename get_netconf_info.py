@@ -203,11 +203,13 @@ def get_info(host, port, user, passw):
 
     print('\nIP address or hostname of your IOS-XE device: HOST = ', host,
           '\nUse the NETCONF port for your IOS-XE device -  PORT = ', port,
-          '\nUse the user credentials for your IOS-XE device -  username = ', user, ' password = ', passw)
+          '\nUser credentials for your IOS-XE device -  username = ', user, ' password = xxxxx')
 
-    print('\nIt will collect information about the device hostname and the S/N',
-          '\nThe list of all interfaces will be printed.'
-          '\nInterface names, configured IPv4 addresses, admin and protocol state are displayed')
+    print('\nThe device information that will be collected (if available): ',
+          '\n - hostname',
+          '\n - serial number'
+          '\n - the list of all interfaces',
+          '\n - interface names, configured IPv4 addresses, admin and operational state')
 
     global HOST, PORT, USER, PASS
 
