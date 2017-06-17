@@ -17,8 +17,8 @@ Device access:
  - IP address or hostname of your CSR1000V device: HOST = "172.16.11.10"
  - Use the NETCONF port for your IOS-XE device -  PORT =  830 
  - Use the user credentials for your IOS-XE device - 
-    - username =  cisco  
-    - password =  cisco
+    - USER =  cisco  
+    - PASS =  cisco
 
 The sample code will collect information about the device hostname and the S/N. 
 The list of all interfaces will be printed.
