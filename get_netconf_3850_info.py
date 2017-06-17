@@ -15,7 +15,7 @@ import json
 
 # use the IP address or hostname of your CSR1000V device
 
-HOST = '172.16.11.10'
+HOST = '172.16.10.105'
 
 # use the NETCONF port for your IOS-XE device
 
@@ -23,9 +23,9 @@ PORT = 830
 
 # use the user credentials for your IOS-XE device
 
-USER = 'cisco'
+USER = 'gzapode'
 
-PASS = 'cisco'
+PASS = 'Clive.1717'
 
 
 def pprint(json_data):
@@ -90,10 +90,14 @@ def get_sn():
                           </native>
                     </filter>
                     '''
-        result = m.get_config('running', sn_filter)
-        xml_doc = xml.dom.minidom.parseString(result.xml)
-        serial_number = xml_doc.getElementsByTagName('sn')
-    return serial_number[0].firstChild.nodeValue
+        try:
+            result = m.get_config('running', sn_filter)
+            xml_doc = xml.dom.minidom.parseString(result.xml)
+            serial_number = xml_doc.getElementsByTagName('sn')
+            device_sn = serial_number[0].firstChild.nodeValue
+        except:
+            device_sn = 'NA'
+    return device_sn
 
 
 def get_interfaces():
@@ -158,12 +162,16 @@ def get_interface_state(interface):
                                      </filter>
                                 '''
 
-        result = m.get(interface_state_filter)
-        xml_doc = xml.dom.minidom.parseString(result.xml)
-        admin_state = xml_doc.getElementsByTagName('admin-status')
-        int_admin_state = admin_state[0].firstChild.nodeValue
-        oper_state = xml_doc.getElementsByTagName('oper-status')
-        int_oper_state = oper_state[0].firstChild.nodeValue
+        try:
+            result = m.get(interface_state_filter)
+            xml_doc = xml.dom.minidom.parseString(result.xml)
+            admin_state = xml_doc.getElementsByTagName('admin-status')
+            int_admin_state = admin_state[0].firstChild.nodeValue
+            oper_state = xml_doc.getElementsByTagName('oper-status')
+            int_oper_state = oper_state[0].firstChild.nodeValue
+        except:
+            int_admin_state = 'NA'
+            int_oper_state = 'NA'
     return int_admin_state, int_oper_state
 
 
@@ -245,10 +253,7 @@ def main():
     # print interface info
 
     print('\nThe device interfaces info:\n')
-    print(' {0:25} {1:20} {2:20} {3:20}'.format('Interface', 'IP Address', 'Admin-State', 'Oper-State'))
-    for intf in interface_info:
-        print(' {0:25} {1:20} {2:20} {3:20}'.format(intf['interface'], intf['ip address'], intf['admin'],
-                                                    intf['protocol']))
+    pprint(interface_info)
 
     print('\n\nEnd of application run')
 
