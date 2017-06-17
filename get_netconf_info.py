@@ -9,10 +9,8 @@
 # import the ncclient library
 
 from ncclient import manager
-import sys
 import xml.dom.minidom
 import json
-
 
 
 # use the IP address or hostname of your CSR1000V device
@@ -137,7 +135,7 @@ def get_interfaces():
 
 def get_interface_state(interface):
     """
-    This function will get the interface state for the specified interface
+    This function will get the interface state for the specified interface via NETCONF
     :param interface: interface name
     :return interface admin and operational state
     """
@@ -170,7 +168,7 @@ def get_interface_state(interface):
 
 def get_interface_ip(interface):
     """
-    This function will retrieve the IPv4 address configured on the interface
+    This function will retrieve the IPv4 address configured on the interface via NETCONF
     :param interface: interface name
     :return: int_ip_add: the interface IPv4 address
     """
@@ -207,13 +205,15 @@ def main():
     This code will showcase how to get info about the network devices using NETCONF
     """
 
-    print('\nThis simple code will use NETCONF to connect to a network device running 16.5.1\n')
+    print('\nThis simple code will use NETCONF to connect to a network device running 16.5.1a\n')
 
-    print('\nIP address or hostname of your CSR1000V device: HOST = "172.16.11.10",'
-          '\nUse the NETCONF port for your IOS-XE device PORT = 830',
-          '\nUse the user credentials for your IOS-XE device, username = "cisco", password = "cisco"')
+    print('\nIP address or hostname of your CSR1000V device: HOST = "172.16.11.10"',
+          '\nUse the NETCONF port for your IOS-XE device -  PORT = ', PORT,
+          '\nUse the user credentials for your IOS-XE device -  username = ', USER, ' password = ', PASS)
 
-    print('\nIt will collect information about the device hostname, S/N, and the interface names')
+    print('\nIt will collect information about the device hostname and the S/N',
+          '\nThe list of all interfaces will be printed.'
+          '\nInterface names, configured IPv4 addresses, admin and protocol state are displayed')
 
     # get the device hostname
 
@@ -232,9 +232,9 @@ def main():
     for intf in interfaces_list:
         print('    ', intf)
 
-    # get the admin and operational state for each interface
+    # get the admin, operational state and IPv4 address for each interface
 
-    interface_info=[]
+    interface_info = []
     for intf in interfaces_list:
         admin_state = get_interface_state(intf)[0]
         oper_state = get_interface_state(intf)[1]
@@ -245,7 +245,6 @@ def main():
 
     print('\nThe device interfaces info:\n')
     pprint(interface_info)
-
 
     print('\n\nEnd of application run')
 
