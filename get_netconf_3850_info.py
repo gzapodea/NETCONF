@@ -25,7 +25,7 @@ PORT = 830
 
 USER = 'gzapode'
 
-PASS = 'Clive.1717'
+PASS = 'Clive@17'
 
 
 def pprint(json_data):
