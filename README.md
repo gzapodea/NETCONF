@@ -31,6 +31,7 @@ Device access:
 The sample code will ask user to select which device to collect information from.
 The device information that will be collected (if available):
  - hostname
+ - serial number
  - the list of all interfaces
  - interface names, configured IPv4 addresses, admin and operational state
 
