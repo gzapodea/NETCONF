@@ -22,8 +22,8 @@ def main():
 
     user_input = False
     while not user_input:
-        print('\nSelect one option:\n1. CSR\n2. 3850\n3. Quit')
-        user_input = input('Enter your selection: ')
+        print('\nSelect one option:\n\n1. CSR\n2. 3850\n3. Quit')
+        user_input = input('\nEnter your selection: ')
         if user_input == '1':
             get_netconf_info.get_info(HOST_CSR, PORT_CSR, USER_CSR, PASS_CSR)
         elif user_input == '2':
