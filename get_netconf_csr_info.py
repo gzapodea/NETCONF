@@ -61,7 +61,8 @@ def get_hostname():
         result = m.get_config('running', hostname_filter)
         xml_doc = xml.dom.minidom.parseString(result.xml)
         hostname = xml_doc.getElementsByTagName('hostname')
-    return hostname[0].firstChild.nodeValue
+        device_hostname = hostname[0].firstChild.nodeValue
+    return device_hostname
 
 
 def get_sn():
@@ -90,10 +91,14 @@ def get_sn():
                           </native>
                     </filter>
                     '''
-        result = m.get_config('running', sn_filter)
-        xml_doc = xml.dom.minidom.parseString(result.xml)
-        serial_number = xml_doc.getElementsByTagName('sn')
-    return serial_number[0].firstChild.nodeValue
+        try:
+            result = m.get_config('running', sn_filter)
+            xml_doc = xml.dom.minidom.parseString(result.xml)
+            serial_number = xml_doc.getElementsByTagName('sn')
+            device_sn = serial_number[0].firstChild.nodeValue
+        except:
+            device_sn = 'NA'
+    return device_sn
 
 
 def get_interfaces():
@@ -158,12 +163,16 @@ def get_interface_state(interface):
                                      </filter>
                                 '''
 
-        result = m.get(interface_state_filter)
-        xml_doc = xml.dom.minidom.parseString(result.xml)
-        admin_state = xml_doc.getElementsByTagName('admin-status')
-        int_admin_state = admin_state[0].firstChild.nodeValue
-        oper_state = xml_doc.getElementsByTagName('oper-status')
-        int_oper_state = oper_state[0].firstChild.nodeValue
+        try:
+            result = m.get(interface_state_filter)
+            xml_doc = xml.dom.minidom.parseString(result.xml)
+            admin_state = xml_doc.getElementsByTagName('admin-status')
+            int_admin_state = admin_state[0].firstChild.nodeValue
+            oper_state = xml_doc.getElementsByTagName('oper-status')
+            int_oper_state = oper_state[0].firstChild.nodeValue
+        except:
+            int_admin_state = 'NA'
+            int_oper_state = 'NA'
     return int_admin_state, int_oper_state
 
 
@@ -208,7 +217,7 @@ def main():
 
     print('\nThis simple code will use NETCONF to connect to a network device running 16.5.1a\n')
 
-    print('\nIP address or hostname of your CSR1000V device: HOST = "172.16.11.10"',
+    print('\nIP address or hostname of your CSR1000V device: HOST = ', HOST,
           '\nUse the NETCONF port for your IOS-XE device -  PORT = ', PORT,
           '\nUse the user credentials for your IOS-XE device -  username = ', USER, ' password = ', PASS)
 
