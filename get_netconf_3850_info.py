@@ -61,7 +61,8 @@ def get_hostname():
         result = m.get_config('running', hostname_filter)
         xml_doc = xml.dom.minidom.parseString(result.xml)
         hostname = xml_doc.getElementsByTagName('hostname')
-    return hostname[0].firstChild.nodeValue
+        device_hostname = hostname[0].firstChild.nodeValue
+    return device_hostname
 
 
 def get_sn():
@@ -253,7 +254,10 @@ def main():
     # print interface info
 
     print('\nThe device interfaces info:\n')
-    pprint(interface_info)
+    print(' {0:25} {1:20} {2:20} {3:20}'.format('Interface', 'IP Address', 'Admin-State', 'Oper-State'))
+    for intf in interface_info:
+        print(' {0:25} {1:20} {2:20} {3:20}'.format(intf['interface'], intf['ip address'], intf['admin'],
+                                                    intf['protocol']))
 
     print('\n\nEnd of application run')
 
