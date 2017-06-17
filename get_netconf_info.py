@@ -237,15 +237,18 @@ def get_info(host, port, user, passw):
     # get the admin, operational state and IPv4 address for each interface
 
     interface_info = []
-    for intf in interfaces_list:
+    intf_index = 0
+    while intf_index < min(len(interfaces_list), 10):
+        intf = interfaces_list[intf_index]
         admin_state = get_interface_state(intf)[0]
         oper_state = get_interface_state(intf)[1]
         ip_address = get_interface_ip(intf)
         interface_info.append({'interface': intf, 'ip address': ip_address, 'admin': admin_state, 'protocol': oper_state})
+        intf_index +=1
 
     # print interface info
 
-    print('\nThe device interfaces info:\n')
+    print('\nThe device interfaces info (for demo - printing 10, or less, interfaces):\n')
     print(' {0:25} {1:20} {2:20} {3:20}'.format('Interface', 'IP Address', 'Admin-State', 'Oper-State'))
     for intf in interface_info:
         print(' {0:25} {1:20} {2:20} {3:20}'.format(intf['interface'], intf['ip address'], intf['admin'],

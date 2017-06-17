@@ -32,7 +32,7 @@ def main():
             break
         user_input = False
 
-    print('End of application run')
+    print('\nEnd of application run')
 
 if __name__ == '__main__':
     main()
