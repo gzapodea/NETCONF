@@ -12,15 +12,15 @@ import xml.dom.minidom
 
 from ncclient import manager
 
-# configure the IP address of your CSR1000V device
+# use the IP address of your CSR1000V device
 
 HOST = '172.16.11.11'
 
-# configure the NETCONF port for your IOS-XE device
+# use the NETCONF port for your IOS-XE device
 
 PORT = 830
 
-# configure the user credentials for your IOS-XE device
+# use the user credentials for your IOS-XE device
 
 USER = 'cisco'
 PASS = 'cisco'

@@ -1,21 +1,14 @@
 
 
-# developed by Gabi Zapodeanu, TSA, GSS, Cisco Systems
+# developed by Gabi Zapodeanu, TSA, GPO, Cisco Systems
 
 
 # !/usr/bin/env python3
 
 
-# import the ncclient library
-
-from ncclient import manager
-import xml.dom.minidom
-import json
-import netconf_init
 import get_netconf_info
-
-from netconf_init import HOST_CSR, PORT_CSR, USER_CSR, PASS_CSR
 from netconf_init import HOST_3850, PORT_3850, USER_3850, PASS_3850
+from netconf_init import HOST_CSR, PORT_CSR, USER_CSR, PASS_CSR
 
 
 def main():

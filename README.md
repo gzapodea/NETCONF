@@ -3,8 +3,8 @@
 NETCONF sample code folder
 
 
- - Download the video files to play locally.
- - Code tested with 16.5.1a, CSR 1000v.
+ - Download the video file to play locally.
+ - Code tested with 16.5.1b, CSR 1000v, and 16.5.1a Catalyst 3850
  - Change the HOST, PORT, USER, PASS to use with your lab.
 
 
@@ -28,7 +28,7 @@ Device access:
     - PASS - your password
 
 
-The sample code will ask user to select which device to collect information from.
+The sample code will ask the user to select which device to collect information from.
 
 The device information that will be collected (if available):
  - hostname

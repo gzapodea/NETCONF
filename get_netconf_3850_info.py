@@ -1,6 +1,6 @@
 
 
-# developed by Gabi Zapodeanu, TSA, GSS, Cisco Systems
+# developed by Gabi Zapodeanu, TSA, GPO, Cisco Systems
 
 
 # !/usr/bin/env python3
@@ -8,10 +8,9 @@
 
 # import the ncclient library
 
-from ncclient import manager
 import xml.dom.minidom
-import json
 
+from ncclient import manager
 
 # use the IP address or hostname of your 3850 device
 
@@ -26,16 +25,6 @@ PORT = 830
 USER = 'gzapode'
 
 PASS = 'Clive@17'
-
-
-def pprint(json_data):
-    """
-    Pretty print JSON formatted data
-    :param json_data:
-    :return:
-    """
-
-    print(json.dumps(json_data, indent=4, separators=(' , ', ' : ')))
 
 
 def get_hostname():

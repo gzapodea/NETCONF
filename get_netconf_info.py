@@ -1,6 +1,6 @@
 
 
-# developed by Gabi Zapodeanu, TSA, GSS, Cisco Systems
+# developed by Gabi Zapodeanu, TSA, GPO, Cisco Systems
 
 
 # !/usr/bin/env python3
@@ -10,17 +10,6 @@
 
 from ncclient import manager
 import xml.dom.minidom
-import json
-
-
-def pprint(json_data):
-    """
-    Pretty print JSON formatted data
-    :param json_data:
-    :return:
-    """
-
-    print(json.dumps(json_data, indent=4, separators=(' , ', ' : ')))
 
 
 def get_hostname():
@@ -218,7 +207,6 @@ def get_info(host, port, user, passw):
     USER = user
     PASS = passw
 
-
     # get the device hostname
 
     device_hostname = get_hostname()
@@ -246,7 +234,7 @@ def get_info(host, port, user, passw):
         oper_state = get_interface_state(intf)[1]
         ip_address = get_interface_ip(intf)
         interface_info.append({'interface': intf, 'ip address': ip_address, 'admin': admin_state, 'protocol': oper_state})
-        intf_index +=1
+        intf_index += 1
 
     # print interface info
 
