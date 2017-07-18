@@ -21,11 +21,11 @@ FILES:
 
 Device access:
 
- - IP address or hostname of your IOS-XE device: HOST 
+ - IP address of your IOS-XE device: HOST 
  - Use the NETCONF port for your IOS-XE device:  PORT 
  - Use the user credentials for your IOS-XE device:
-    - username: USER  
-    - password: PASS
+    - USER - your username
+    - PASS - your password
 
 
 The sample code will ask user to select which device to collect information from.

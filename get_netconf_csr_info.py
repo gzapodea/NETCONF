@@ -1,6 +1,6 @@
 
 
-# developed by Gabi Zapodeanu, TSA, GSS, Cisco Systems
+# developed by Gabi Zapodeanu, TSA, GPO, Cisco Systems
 
 
 # !/usr/bin/env python3
@@ -8,39 +8,27 @@
 
 # import the ncclient library
 
-from ncclient import manager
 import xml.dom.minidom
-import json
 
+from ncclient import manager
 
-# use the IP address or hostname of your CSR1000V device
+# configure the IP address of your CSR1000V device
 
-HOST = '172.16.11.10'
+HOST = '172.16.11.11'
 
-# use the NETCONF port for your IOS-XE device
+# configure the NETCONF port for your IOS-XE device
 
 PORT = 830
 
-# use the user credentials for your IOS-XE device
+# configure the user credentials for your IOS-XE device
 
 USER = 'cisco'
-
 PASS = 'cisco'
-
-
-def pprint(json_data):
-    """
-    Pretty print JSON formatted data
-    :param json_data:
-    :return:
-    """
-
-    print(json.dumps(json_data, indent=4, separators=(' , ', ' : ')))
 
 
 def get_hostname():
     """
-    This function will retrieve the hostname from config via NETCONF.
+    This function will retrieve the configured device hostname via NETCONF.
     :return hostname: device hostname
     """
 
@@ -59,6 +47,9 @@ def get_hostname():
                           </filter>
                           '''
         result = m.get_config('running', hostname_filter)
+
+        print(xml.dom.minidom.parseString(result.xml).toprettyxml())
+
         xml_doc = xml.dom.minidom.parseString(result.xml)
         hostname = xml_doc.getElementsByTagName('hostname')
         device_hostname = hostname[0].firstChild.nodeValue
@@ -128,6 +119,9 @@ def get_interfaces():
                             '''
 
         result = m.get_config('running', interface_filter)
+
+        print(xml.dom.minidom.parseString(result.xml).toprettyxml())
+
         xml_doc = xml.dom.minidom.parseString(result.xml)
         interfaces = []
         interface_name = xml_doc.getElementsByTagName('name')
@@ -212,7 +206,7 @@ def get_interface_ip(interface):
 
 def main():
     """
-    This code will showcase how to get info about the network devices using NETCONF
+    This code will showcase how to get network devices information using NETCONF
     """
 
     print('\nThis simple code will use NETCONF to connect to a network device running 16.5.1a\n')
