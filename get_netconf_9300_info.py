@@ -25,7 +25,6 @@ PORT = 830
 # use the user credentials for your 9300 switch
 
 USER = 'cisco'
-
 PASS = 'cisco'
 
 
@@ -227,7 +226,6 @@ def main():
         pass
     print('\nTwitter temp status update')
     print(twitter_intf_up)
-
 
     # get the admin, operational state and IPv4 address for each interface
 
