@@ -18,7 +18,7 @@ FILES:
  - netconf_info.py - sample code that will use the same function - get_netconf_info.py, to access both CSRs and 3850s
     - change the device access info in the file netconf_init.py
  - get_netconf_9300_info.py - the code will find out:
-    - Internal switch temperature
+    - internal switch temperature
     - outdoor temperature for the location of the switch
     - interfaces that are operational state "up"
     - post the above information on twitter
